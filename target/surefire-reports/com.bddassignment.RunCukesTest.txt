@@ -1,4 +1,22 @@
 -------------------------------------------------------------------------------
 Test set: com.bddassignment.RunCukesTest
 -------------------------------------------------------------------------------
-Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 67.899 sec
+Tests run: 33, Failures: 2, Errors: 0, Skipped: 1, Time elapsed: 87.41 sec <<< FAILURE!
+Then I see the first item at £49.99(Scenario: item search)  Time elapsed: 0.013 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<49.99> but was:<595.18>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:553)
+	at org.junit.Assert.assertEquals(Assert.java:683)
+	at com.bddassignment.EbayCustomerSteps.i_see_the_fist_item_at_£(EbayCustomerSteps.java:48)
+	at ✽.Then I see the first item at £49.99(src/test/resources/com.bddassignment/EbayCustomer.feature:26)
+
+Scenario: item search  Time elapsed: 0.014 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<49.99> but was:<595.18>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:553)
+	at org.junit.Assert.assertEquals(Assert.java:683)
+	at com.bddassignment.EbayCustomerSteps.i_see_the_fist_item_at_£(EbayCustomerSteps.java:48)
+	at ✽.Then I see the first item at £49.99(src/test/resources/com.bddassignment/EbayCustomer.feature:26)
+

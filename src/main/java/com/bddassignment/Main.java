@@ -80,7 +80,7 @@ public class Main {
         }
 
 
-        System.out.println("There are " + ebayDriver.numberOfItems() + " on sell with this filter, 50 in this page! Which one do you want to see?");
+        System.out.println("There are " + ebayDriver.getNumItems() + " on sell with this filter, 50 in this page! Which one do you want to see?");
 
         itemNumber = sc.nextInt();
         ebayDriver.getItem(itemNumber).showItem();

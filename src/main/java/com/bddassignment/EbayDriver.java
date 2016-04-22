@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
 public class EbayDriver {
     private WebDriver webDriver;
     private WebDriverWait wait;
+    private int numItems;
 
     /*
     * This is the constructor of the class EbayDriver. This opens the safari browser into the
@@ -40,6 +41,7 @@ public class EbayDriver {
         this.webDriver = new SafariDriver();
         wait = new WebDriverWait(webDriver, 20);
         webDriver.get("http://www.ebay.co.uk");
+        this.numItems=0;
     }
 
     public void close(){
@@ -53,9 +55,10 @@ public class EbayDriver {
     public void searchBy(String itemName){
         wait.until(ExpectedConditions.elementToBeClickable(By.id("gh-ac"))).sendKeys(itemName);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("gh-btn"))).click();
+        setNumberOfItems();
     }
 
-    public int numberOfItems(){
+    private void setNumberOfItems(){
         int numItems = 0;
         WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='listingscnt']")));
         String pattern = "\\d+,{0,1}\\d*";
@@ -64,7 +67,7 @@ public class EbayDriver {
         if (m.find( ))
             numItems = Integer.parseInt(m.group(0).replaceAll(",",""));
 
-        return numItems;
+        this.numItems=numItems;
     }
 
     /*
@@ -96,10 +99,13 @@ public class EbayDriver {
             } else if (sortingType.compareTo("Best Match") == 0) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id='SortMenu']/li/a[@value='12']"))).click();
             }
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//ul[@id='SortMenu']")));
         }
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//ul[@id='SortMenu']")));
+
     }
 
+
+    /*The sorting methods implemented below could be removes since they are only used in the main class.*/
     /*
     * Sort all the search by the best match items (Default). In case the page is not loaded it
     * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
@@ -152,40 +158,50 @@ public class EbayDriver {
     /*
     * List all the items depending on the listing type (Auction | Buy it now).
      */
-    public void list(String listingType){
+    public void list(String listingType) throws InterruptedException {
         if(listingType.compareTo("Auction")==0){
-            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Auction']"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Auction"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='Auction']")));
+            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='Auction']")));
+            wait.until(ExpectedConditions.urlContains("LH_Auction=1"));
         }else if(listingType.compareTo("Buy it now")==0){
             wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Buy it now"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='Buy it now']")));
-        }
-        else if(listingType.compareTo("All listings")==0){
+            wait.until(ExpectedConditions.urlContains("LH_BIN=1"));
+        }else if(listingType.compareTo("All listings")==0){
             wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("All listings"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='All listings']")));
+            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='All listings']")));
+            wait.until(ExpectedConditions.urlMatches("=nc$"));
         }
+        setNumberOfItems();
     }
 
+
+    /*The three listing methods below are only used in the main class, they could be removed.*/
     /*
     * List all the items.
      */
     public void listAll(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='All listings']"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("All listings"))).click();
+        //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='All listings']")));
+        wait.until(ExpectedConditions.urlMatches("=nc$"));
+        setNumberOfItems();
     }
 
     /*
     * List all the items that are under an auction.
      */
     public void listAuctions(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Auction']"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Auction"))).click();
+        wait.until(ExpectedConditions.urlContains("LH_Auction=1"));
+        setNumberOfItems();
     }
 
     /*
     * List all the items that can be bought without a bid.
      */
     public void listBuyNow(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Buy it now']"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Buy it now"))).click();
+        wait.until(ExpectedConditions.urlContains("LH_BIN=1"));
+        setNumberOfItems();
     }
 
     /*
@@ -198,7 +214,7 @@ public class EbayDriver {
         WebElement title = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/h3/a"));
         item.setTitle(title.getText());
 
-        WebElement price = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvprice prc']/span"));
+        WebElement price = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvprice prc']/span"));
         item.setPrice(price.getText());
 
         String textFormat = getItemFormat(itemNumber);
@@ -214,27 +230,31 @@ public class EbayDriver {
     }
 
     public String getItemFormat(int itemNumber){
-        WebElement format = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvformat']/span"));
+        WebElement format = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvformat']/span"));
         String textFormat = format.getText();
         try{
-            format = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvformat']/span/span"));
+            format = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvformat']/span/span"));
             textFormat=format.getAttribute("title");
         }catch(Exception ex){}
         return textFormat;
     }
 
     public String getItemPostage(int itemNumber){
-        WebElement postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvshipping']/span"));
+        WebElement postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvshipping']/span"));
 
         if(postage.getText().compareTo("")==0){
-            postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvshipping']/span/span"));
+            postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvshipping']/span/span"));
         }
 
         if(postage.getText().compareTo("")==0){
-            postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul[@class='lvprices left space-zero']/li[@class='lvshipping']/span/span"));
+            postage = webDriver.findElement(By.xpath("//ul[@id='ListViewInner']/li[@r='"+itemNumber+"']/ul/li[@class='lvshipping']/span/span"));
         }
 
         return postage.getText();
+    }
+
+    public int getNumItems(){
+        return this.numItems;
     }
 
 }

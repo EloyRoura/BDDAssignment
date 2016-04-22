@@ -23,7 +23,7 @@ Feature: ebay search
         When I search for iPhone
         And I list the "Buy it now"
         And I sort by "Newly listed"
-        Then I see the first item at £49.99
+        Then I see the first item at £800.0
         And it has "NonFree" Postage
 
     Scenario: item search
@@ -37,4 +37,4 @@ Feature: ebay search
         And I list the "All listings"
         And I sort by "Best Match"
         Then I see the first item at £249.99
-        And there are 12100 items
+        And there are 12117 items

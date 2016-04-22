@@ -10,28 +10,31 @@ Feature: ebay search
         When I search for iPhone
         And I list the "Buy it now"
         And I sort by "Highest Price"
-        Then I see the fist item at £14000
+        Then I see the first item at £16000
 
     Scenario: item search
         When I search for iPhone
         And I list the "Auction"
         And I sort by "Highest Price"
-        Then I see the fist item at £3000
+        Then I see the first item at £3000
+        And it has 0 bids
 
     Scenario: item search
         When I search for iPhone
         And I list the "Buy it now"
         And I sort by "Newly listed"
-        Then I see the fist item at £364.99
+        Then I see the first item at £49.99
+        And it has "NonFree" Postage
 
     Scenario: item search
         When I search for iPhone
         And I list the "Buy it now"
         And I sort by "Lowest Price + P&P"
-        Then I see the fist item at £0.99
+        Then I see the first item at £0.99
 
     Scenario: item search
-            When I search for iPhone
-            And I list the "All listings"
-            And I sort by "Best Match"
-            Then I see the fist item at £189.99
+        When I search for iPhone
+        And I list the "All listings"
+        And I sort by "Best Match"
+        Then I see the first item at £249.99
+        And there are 12100 items

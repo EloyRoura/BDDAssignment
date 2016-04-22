@@ -1,96 +1,176 @@
-[INFO] Scanning for projects...
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building bddassignment 1.0-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ bddassignment ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /Users/eloyrouraperez/IdeaProjects/bddassignment/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ bddassignment ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ bddassignment ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 1 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ bddassignment ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ bddassignment ---
-[INFO] Surefire report directory: /Users/eloyrouraperez/IdeaProjects/bddassignment/target/surefire-reports
 
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running com.bddassignment.ItemTest
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 sec
-Running com.bddassignment.RunCukesTest
+  Background: A web browser  # src/test/resources/com.bddassignment/EbayCustomer.feature:6
+    Given I open the website # EbayCustomerSteps.i_open_the_website()
+Buy it now
+Trobat
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutting down
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Closing connection
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping Safari
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping server
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverServer stop
+INFO: Stopping server
+
+  Scenario: item search                 # src/test/resources/com.bddassignment/EbayCustomer.feature:9
+    When I search for iPhone            # EbayCustomerSteps.search(String)
+    And I list the "Buy it now"         # EbayCustomerSteps.list(String)
+    And I sort by "Highest Price"       # EbayCustomerSteps.sortBy(String)
+    Then I see the first item at £16000 # EbayCustomerSteps.i_see_the_fist_item_at_£(double)
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutdown complete
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverServer start
+INFO: Server started on port 35346
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Launching Safari
+Apr 22, 2016 12:30:45 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Waiting for SafariDriver to connect
+Apr 22, 2016 12:30:48 PM org.openqa.selenium.safari.SafariDriverChannelHandler$1 operationComplete
+INFO: Connection opened
+Apr 22, 2016 12:30:48 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Driver connected in 2854 ms
+
+  Background: A web browser  # src/test/resources/com.bddassignment/EbayCustomer.feature:6
+    Given I open the website # EbayCustomerSteps.i_open_the_website()
+Auction
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutting down
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Closing connection
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping Safari
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping server
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverServer stop
+INFO: Stopping server
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutdown complete
+
+  Scenario: item search                # src/test/resources/com.bddassignment/EbayCustomer.feature:15
+    When I search for iPhone           # EbayCustomerSteps.search(String)
+    And I list the "Auction"           # EbayCustomerSteps.list(String)
+    And I sort by "Highest Price"      # EbayCustomerSteps.sortBy(String)
+    Then I see the first item at £3000 # EbayCustomerSteps.i_see_the_fist_item_at_£(double)
+    And it has 0 bids                  # EbayCustomerSteps.i_see_numberOfBids(int)
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverServer start
+INFO: Server started on port 2080
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Launching Safari
+Apr 22, 2016 12:31:01 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Waiting for SafariDriver to connect
+Apr 22, 2016 12:31:04 PM org.openqa.selenium.safari.SafariDriverChannelHandler$1 operationComplete
+INFO: Connection opened
+Apr 22, 2016 12:31:04 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Driver connected in 3124 ms
+
+  Background: A web browser  # src/test/resources/com.bddassignment/EbayCustomer.feature:6
+    Given I open the website # EbayCustomerSteps.i_open_the_website()
+Buy it now
+Trobat
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutting down
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Closing connection
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping Safari
+
+  Scenario: item search                 # src/test/resources/com.bddassignment/EbayCustomer.feature:22
+    When I search for iPhone            # EbayCustomerSteps.search(String)
+    And I list the "Buy it now"         # EbayCustomerSteps.list(String)
+    And I sort by "Newly listed"        # EbayCustomerSteps.sortBy(String)
+    Then I see the first item at £49.99 # EbayCustomerSteps.i_see_the_fist_item_at_£(double)
+    And it has "NonFree" Postage        # EbayCustomerSteps.i_see_numberOfBids(String)
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping server
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverServer stop
+INFO: Stopping server
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutdown complete
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverServer start
+INFO: Server started on port 10534
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Launching Safari
+Apr 22, 2016 12:31:19 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Waiting for SafariDriver to connect
+Apr 22, 2016 12:31:22 PM org.openqa.selenium.safari.SafariDriverChannelHandler$1 operationComplete
+INFO: Connection opened
+Apr 22, 2016 12:31:22 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Driver connected in 3130 ms
+
+  Background: A web browser  # src/test/resources/com.bddassignment/EbayCustomer.feature:6
+    Given I open the website # EbayCustomerSteps.i_open_the_website()
+Buy it now
+Trobat
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutting down
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Closing connection
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping Safari
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping server
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverServer stop
+INFO: Stopping server
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutdown complete
+
+  Scenario: item search                # src/test/resources/com.bddassignment/EbayCustomer.feature:29
+    When I search for iPhone           # EbayCustomerSteps.search(String)
+    And I list the "Buy it now"        # EbayCustomerSteps.list(String)
+    And I sort by "Lowest Price + P&P" # EbayCustomerSteps.sortBy(String)
+    Then I see the first item at £0.99 # EbayCustomerSteps.i_see_the_fist_item_at_£(double)
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverServer start
+INFO: Server started on port 34539
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Launching Safari
+Apr 22, 2016 12:31:37 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Waiting for SafariDriver to connect
+Apr 22, 2016 12:31:40 PM org.openqa.selenium.safari.SafariDriverChannelHandler$1 operationComplete
+INFO: Connection opened
+Apr 22, 2016 12:31:40 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Driver connected in 2854 ms
+
+  Background: A web browser  # src/test/resources/com.bddassignment/EbayCustomer.feature:6
+    Given I open the website # EbayCustomerSteps.i_open_the_website()
+All listings
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutting down
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Closing connection
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping Safari
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Stopping server
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverServer stop
+INFO: Stopping server
+Apr 22, 2016 12:31:50 PM org.openqa.selenium.safari.SafariDriverCommandExecutor stop
+INFO: Shutdown complete
+
+  Scenario: item search                  # src/test/resources/com.bddassignment/EbayCustomer.feature:35
+    When I search for iPhone             # EbayCustomerSteps.search(String)
+    And I list the "All listings"        # EbayCustomerSteps.list(String)
+    And I sort by "Best Match"           # EbayCustomerSteps.sortBy(String)
+    Then I see the first item at £249.99 # EbayCustomerSteps.i_see_the_fist_item_at_£(double)
+    And there are 12100 items            # EbayCustomerSteps.i_see_numberOfItems(int)
+
+5 Scenarios (5 passed)
+28 Steps (28 passed)
+1m24.755s
 Feature: ebay search
     As a new ebay customer
     I want to be able to shop for an item I want, to look for the cheapest
     item available and use the filtering options available.
+Apr 22, 2016 12:30:26 PM org.openqa.selenium.safari.SafariDriverServer start
+INFO: Server started on port 9355
+Apr 22, 2016 12:30:26 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Launching Safari
+Apr 22, 2016 12:30:26 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Waiting for SafariDriver to connect
+Apr 22, 2016 12:30:30 PM org.openqa.selenium.safari.SafariDriverChannelHandler$1 operationComplete
+INFO: Connection opened
+Apr 22, 2016 12:30:30 PM org.openqa.selenium.safari.SafariDriverCommandExecutor start
+INFO: Driver connected in 3716 ms
 
-  Background: A web browser  [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:6[0m
-    [32mGiven [0m[32mI open the website[0m [90m# EbayCustomerSteps.i_open_the_website()[0m
-
-  Scenario: item search                [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:9[0m
-    [32mWhen [0m[32mI search for [0m[32m[1miPhone[0m           [90m# EbayCustomerSteps.search(String)[0m
-    [32mAnd [0m[32mI list the "[0m[32m[1mBuy it now[0m[32m"[0m        [90m# EbayCustomerSteps.list(String)[0m
-    [32mAnd [0m[32mI sort by "[0m[32m[1mHighest Price[0m[32m"[0m      [90m# EbayCustomerSteps.sortBy(String)[0m
-    [32mThen [0m[32mI see the fist item at £[0m[32m[1m14000[0m [90m# EbayCustomerSteps.i_see_the_fist_item_at_£(double)[0m
-
-  Background: A web browser  [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:6[0m
-    [32mGiven [0m[32mI open the website[0m [90m# EbayCustomerSteps.i_open_the_website()[0m
-
-  Scenario: item search               [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:15[0m
-    [32mWhen [0m[32mI search for [0m[32m[1miPhone[0m          [90m# EbayCustomerSteps.search(String)[0m
-    [32mAnd [0m[32mI list the "[0m[32m[1mAuction[0m[32m"[0m          [90m# EbayCustomerSteps.list(String)[0m
-    [32mAnd [0m[32mI sort by "[0m[32m[1mHighest Price[0m[32m"[0m     [90m# EbayCustomerSteps.sortBy(String)[0m
-    [32mThen [0m[32mI see the fist item at £[0m[32m[1m3000[0m [90m# EbayCustomerSteps.i_see_the_fist_item_at_£(double)[0m
-
-  Background: A web browser  [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:6[0m
-    [32mGiven [0m[32mI open the website[0m [90m# EbayCustomerSteps.i_open_the_website()[0m
-
-  Scenario: item search                 [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:21[0m
-    [32mWhen [0m[32mI search for [0m[32m[1miPhone[0m            [90m# EbayCustomerSteps.search(String)[0m
-    [32mAnd [0m[32mI list the "[0m[32m[1mBuy it now[0m[32m"[0m         [90m# EbayCustomerSteps.list(String)[0m
-    [32mAnd [0m[32mI sort by "[0m[32m[1mNewly listed[0m[32m"[0m        [90m# EbayCustomerSteps.sortBy(String)[0m
-    [32mThen [0m[32mI see the fist item at £[0m[32m[1m364.99[0m [90m# EbayCustomerSteps.i_see_the_fist_item_at_£(double)[0m
-
-  Background: A web browser  [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:6[0m
-    [32mGiven [0m[32mI open the website[0m [90m# EbayCustomerSteps.i_open_the_website()[0m
-
-  Scenario: item search                [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:27[0m
-    [32mWhen [0m[32mI search for [0m[32m[1miPhone[0m           [90m# EbayCustomerSteps.search(String)[0m
-    [32mAnd [0m[32mI list the "[0m[32m[1mBuy it now[0m[32m"[0m        [90m# EbayCustomerSteps.list(String)[0m
-    [32mAnd [0m[32mI sort by "[0m[32m[1mLowest Price + P&P[0m[32m"[0m [90m# EbayCustomerSteps.sortBy(String)[0m
-    [32mThen [0m[32mI see the fist item at £[0m[32m[1m0.99[0m  [90m# EbayCustomerSteps.i_see_the_fist_item_at_£(double)[0m
-
-  Background: A web browser  [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:6[0m
-    [32mGiven [0m[32mI open the website[0m [90m# EbayCustomerSteps.i_open_the_website()[0m
-
-  Scenario: item search                 [90m# src/test/resources/com.bddassignment/EbayCustomer.feature:33[0m
-    [32mWhen [0m[32mI search for [0m[32m[1miPhone[0m            [90m# EbayCustomerSteps.search(String)[0m
-    [32mAnd [0m[32mI list the "[0m[32m[1mAll listings[0m[32m"[0m       [90m# EbayCustomerSteps.list(String)[0m
-    [32mAnd [0m[32mI sort by "[0m[32m[1mBest Match[0m[32m"[0m          [90m# EbayCustomerSteps.sortBy(String)[0m
-    [32mThen [0m[32mI see the fist item at £[0m[32m[1m189.99[0m [90m# EbayCustomerSteps.i_see_the_fist_item_at_£(double)[0m
-
-5 Scenarios ([32m5 passed[0m)
-25 Steps ([32m25 passed[0m)
-1m7.450s
-
-Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 67.899 sec
-
-Results :
-
-Tests run: 34, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 01:10 min
-[INFO] Finished at: 2016-04-22T10:01:36+02:00
-[INFO] Final Memory: 12M/180M
-[INFO] ------------------------------------------------------------------------
+Process finished with exit code 0

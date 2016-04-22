@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="30" failures="0" name="com.bddassignment.RunCukesTest" time="0.007" errors="0" skipped="0">
+<testsuite tests="33" failures="2" name="com.bddassignment.RunCukesTest" time="0.045" errors="0" skipped="1">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -63,34 +63,57 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Scenario: item search" name="Given I open the website" time="0.006"/>
+  <testcase classname="Scenario: item search" name="Given I open the website" time="0"/>
   <testcase classname="Scenario: item search" name="When I search for iPhone" time="0"/>
   <testcase classname="Scenario: item search" name="And I list the &quot;Buy it now&quot;" time="0"/>
   <testcase classname="Scenario: item search" name="And I sort by &quot;Highest Price&quot;" time="0"/>
-  <testcase classname="Scenario: item search" name="Then I see the fist item at £14000" time="0"/>
-  <testcase classname="Scenario: item search" name="Scenario: item search" time="0.001"/>
+  <testcase classname="Scenario: item search" name="Then I see the first item at £16000" time="0"/>
+  <testcase classname="Scenario: item search" name="Scenario: item search" time="0.002"/>
   <testcase classname="Scenario: item search" name="Given I open the website" time="0"/>
   <testcase classname="Scenario: item search" name="When I search for iPhone" time="0"/>
   <testcase classname="Scenario: item search" name="And I list the &quot;Auction&quot;" time="0"/>
   <testcase classname="Scenario: item search" name="And I sort by &quot;Highest Price&quot;" time="0"/>
-  <testcase classname="Scenario: item search" name="Then I see the fist item at £3000" time="0"/>
+  <testcase classname="Scenario: item search" name="Then I see the first item at £3000" time="0"/>
+  <testcase classname="Scenario: item search" name="And it has 0 bids" time="0"/>
   <testcase classname="Scenario: item search" name="Scenario: item search" time="0"/>
-  <testcase classname="Scenario: item search" name="Given I open the website" time="0"/>
+  <testcase classname="Scenario: item search" name="Given I open the website" time="0.001"/>
   <testcase classname="Scenario: item search" name="When I search for iPhone" time="0"/>
   <testcase classname="Scenario: item search" name="And I list the &quot;Buy it now&quot;" time="0"/>
   <testcase classname="Scenario: item search" name="And I sort by &quot;Newly listed&quot;" time="0"/>
-  <testcase classname="Scenario: item search" name="Then I see the fist item at £364.99" time="0"/>
-  <testcase classname="Scenario: item search" name="Scenario: item search" time="0"/>
+  <testcase classname="Scenario: item search" name="Then I see the first item at £49.99" time="0.013">
+    <failure message="expected:&lt;49.99&gt; but was:&lt;595.18&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;49.99&gt; but was:&lt;595.18&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:553)
+	at org.junit.Assert.assertEquals(Assert.java:683)
+	at com.bddassignment.EbayCustomerSteps.i_see_the_fist_item_at_£(EbayCustomerSteps.java:48)
+	at ✽.Then I see the first item at £49.99(src/test/resources/com.bddassignment/EbayCustomer.feature:26)
+</failure>
+  </testcase>
+  <testcase classname="Scenario: item search" name="Scenario: item search" time="0.014">
+    <failure message="expected:&lt;49.99&gt; but was:&lt;595.18&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;49.99&gt; but was:&lt;595.18&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:553)
+	at org.junit.Assert.assertEquals(Assert.java:683)
+	at com.bddassignment.EbayCustomerSteps.i_see_the_fist_item_at_£(EbayCustomerSteps.java:48)
+	at ✽.Then I see the first item at £49.99(src/test/resources/com.bddassignment/EbayCustomer.feature:26)
+</failure>
+  </testcase>
+  <testcase classname="Scenario: item search" name="And it has &quot;NonFree&quot; Postage" time="0.014">
+    <skipped/>
+  </testcase>
   <testcase classname="Scenario: item search" name="Given I open the website" time="0"/>
   <testcase classname="Scenario: item search" name="When I search for iPhone" time="0"/>
   <testcase classname="Scenario: item search" name="And I list the &quot;Buy it now&quot;" time="0"/>
   <testcase classname="Scenario: item search" name="And I sort by &quot;Lowest Price + P&amp;P&quot;" time="0"/>
-  <testcase classname="Scenario: item search" name="Then I see the fist item at £0.99" time="0"/>
-  <testcase classname="Scenario: item search" name="Scenario: item search" time="0"/>
+  <testcase classname="Scenario: item search" name="Then I see the first item at £0.99" time="0"/>
+  <testcase classname="Scenario: item search" name="Scenario: item search" time="0.001"/>
   <testcase classname="Scenario: item search" name="Given I open the website" time="0"/>
   <testcase classname="Scenario: item search" name="When I search for iPhone" time="0"/>
   <testcase classname="Scenario: item search" name="And I list the &quot;All listings&quot;" time="0"/>
   <testcase classname="Scenario: item search" name="And I sort by &quot;Best Match&quot;" time="0"/>
-  <testcase classname="Scenario: item search" name="Then I see the fist item at £189.99" time="0"/>
+  <testcase classname="Scenario: item search" name="Then I see the first item at £249.99" time="0"/>
+  <testcase classname="Scenario: item search" name="And there are 12100 items" time="0"/>
   <testcase classname="Scenario: item search" name="Scenario: item search" time="0"/>
 </testsuite>
