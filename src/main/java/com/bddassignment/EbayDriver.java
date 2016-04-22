@@ -38,8 +38,13 @@ public class EbayDriver {
      */
     public EbayDriver(){
         this.webDriver = new SafariDriver();
-        wait = new WebDriverWait(webDriver, 10);
+        wait = new WebDriverWait(webDriver, 20);
         webDriver.get("http://www.ebay.co.uk");
+    }
+
+    public void close(){
+        this.webDriver.close();
+        this.webDriver.quit();
     }
 
     /*
@@ -71,8 +76,33 @@ public class EbayDriver {
      */
 
     /*
+    * Sort all the search by the sorting type filter (Default Best Match). In case the page is not loaded it
+    * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
+     */
+    public void sortBy(String sortingType){
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='sel']"))).click();
+
+        WebElement currentSort=webDriver.findElement(By.xpath("//ul[@class='sel']/li/a"));
+
+        if(currentSort.getText().compareTo(sortingType)==0) {
+            currentSort.click();
+        }else{
+            if (sortingType.compareTo("Lowest Price + P&P") == 0) {
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id='SortMenu']/li/a[@value='15']"))).click();
+            } else if (sortingType.compareTo("Highest Price") == 0) {
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id='SortMenu']/li/a[@value='3']"))).click();
+            } else if (sortingType.compareTo("Newly listed") == 0) {
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id='SortMenu']/li/a[@value='10']"))).click();
+            } else if (sortingType.compareTo("Best Match") == 0) {
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@id='SortMenu']/li/a[@value='12']"))).click();
+            }
+        }
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//ul[@id='SortMenu']")));
+    }
+
+    /*
     * Sort all the search by the best match items (Default). In case the page is not loaded it
-    * waits 10 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
+    * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
      */
     public void sortBestMatch(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='sel']"))).click();
@@ -82,7 +112,7 @@ public class EbayDriver {
 
     /*
     * Sort all the search by the lowest price and P&P items. In case the page is not loaded it
-    * waits 10 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
+    * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
      */
     public void sortLowestPrice(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='sel']"))).click();
@@ -92,7 +122,7 @@ public class EbayDriver {
 
     /*
     * Sort all the search by the highest price items. In case the page is not loaded it
-    * waits 10 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
+    * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded.
      */
     public void sortHighestPrice(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='sel']"))).click();
@@ -102,7 +132,7 @@ public class EbayDriver {
 
     /*
     * Sort all the search by the newly listed items. In case the page is not loaded it
-    * waits 10 seconds. Once done, it also waits 10 more seconds until the next page is loaded
+    * waits 20 seconds. Once done, it also waits 10 more seconds until the next page is loaded
      */
     public void sortNewlyListed(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='sel']"))).click();
@@ -118,6 +148,24 @@ public class EbayDriver {
     *       Buy it now
      */
 
+
+    /*
+    * List all the items depending on the listing type (Auction | Buy it now).
+     */
+    public void list(String listingType){
+        if(listingType.compareTo("Auction")==0){
+            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Auction']"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Auction"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='Auction']")));
+        }else if(listingType.compareTo("Buy it now")==0){
+            wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Buy it now"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='Buy it now']")));
+        }
+        else if(listingType.compareTo("All listings")==0){
+            wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("All listings"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@title='All listings']")));
+        }
+    }
 
     /*
     * List all the items.
